@@ -1,37 +1,46 @@
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
-    <title>Minibar — мобильная версия</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
+<!doctype html>
+<html lang="ru"><head>
+  <meta charset="utf-8">
+  <title>Сроки – Minibar</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="app">
-        <nav class="nav">
-            <div class="logo"><i class="fas fa-wine-bottle"></i> Minibar</div>
-            <div class="nav-item active" data-tab="accises"><i class="fas fa-file-invoice"></i><span>Акцизы</span></div>
-            <div class="nav-item" data-tab="sroki"><i class="fas fa-door-closed"></i><span>Сроки</span></div>
-            <div class="nav-item" data-tab="gih"><i class="fas fa-users"></i><span>GIH</span></div>
-            <div class="nav-separator"></div>
-            <div class="nav-item extra" data-tab="settings"><i class="fas fa-cog"></i><span>Настройки</span></div>
-            <div class="nav-item extra" data-tab="learning"><i class="fas fa-book-open"></i><span>Обучение</span></div>
-            <div class="nav-item extra" data-tab="practice"><i class="fas fa-flask"></i><span>Практика</span></div>
-            <div class="nav-item extra" data-tab="history"><i class="fas fa-history"></i><span>История</span></div>
-        </nav>
-        <main class="content" id="main-content">
-            <!-- Content will be inserted here for each section -->
-            
-        <h1>Сроки</h1>
-        <div class="card" id="sroki-section">
-            <div style="font-weight:700; font-size:16px">Контроль сроков</div>
-            <div class="rooms-grid" id="rooms-grid"></div>
-        </div>
-    
-        </main>
+  <nav id="global-nav"></nav>
+
+  <main id="main-content">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-weight:700;font-size:16px">Контроль сроки</div>
+      </div>
+      <div class="rooms-grid" id="rooms-grid"></div>
     </div>
-    <script src="js/scripts.js"></script>
-</body>
+  </main>
+
+  <div id="bottom-nav"></div>
+
+  <!-- Modal markup (same as before) -->
+  <div aria-hidden="true" class="overlay" id="modal">
+    <div aria-modal="true" class="modal" role="dialog">
+      <div class="modal-head">
+        <div>
+          <div class="modal-title">Номер <span id="modal-room">—</span></div>
+          <div class="muted">Выберите продукты</div>
+        </div>
+        <button aria-label="Закрыть" class="btn ghost small" id="modal-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="products-wrap" id="modal-products"></div>
+      <div class="modal-foot">
+        <button class="btn ghost small" id="modal-reset">Сброс</button>
+        <button class="btn secondary small" id="modal-ok-order">Сроки в порядке</button>
+        <button class="btn small" id="modal-save"><i class="fas fa-check"></i> Завершить</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="js/common.js"></script>
+  <script src="js/sroki.js"></script>
+</body></html>
 </html>
