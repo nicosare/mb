@@ -1,37 +1,66 @@
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
-    <title>Minibar — мобильная версия</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
+<!doctype html>
+<html lang="ru"><head>
+  <meta charset="utf-8">
+  <title>GIH – Minibar</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="app">
-        <nav class="nav">
-            <div class="logo"><i class="fas fa-wine-bottle"></i> Minibar</div>
-            <div class="nav-item active" data-tab="accises"><i class="fas fa-file-invoice"></i><span>Акцизы</span></div>
-            <div class="nav-item" data-tab="sroki"><i class="fas fa-door-closed"></i><span>Сроки</span></div>
-            <div class="nav-item" data-tab="gih"><i class="fas fa-users"></i><span>GIH</span></div>
-            <div class="nav-separator"></div>
-            <div class="nav-item extra" data-tab="settings"><i class="fas fa-cog"></i><span>Настройки</span></div>
-            <div class="nav-item extra" data-tab="learning"><i class="fas fa-book-open"></i><span>Обучение</span></div>
-            <div class="nav-item extra" data-tab="practice"><i class="fas fa-flask"></i><span>Практика</span></div>
-            <div class="nav-item extra" data-tab="history"><i class="fas fa-history"></i><span>История</span></div>
-        </nav>
-        <main class="content" id="main-content">
-            <!-- Content will be inserted here for each section -->
-            
-        <h1>GIH</h1>
-        <div class="card" id="gih-section">
-            <div style="font-weight:700; font-size:16px">GIH 30.08.25</div>
-            <div id="gih-records"></div>
+  <nav id="global-nav"></nav>
+
+  <main id="main-content">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-weight:700;font-size:16px">GIH 30.08.25</div>
+        <div class="row">
+          <button class="btn ghost small" id="gih-sort-btn" title="Сортировать">
+            <i class="fas fa-sort-numeric-down"></i>
+          </button>
+          <button class="btn secondary small" id="add-gih-btn">
+            <i class="fas fa-plus"></i> Новая запись
+          </button>
         </div>
-    
-        </main>
+      </div>
+
+      <!-- GIH Form -->
+      <div aria-hidden="true" class="gih-form" id="gih-form">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <input class="input" id="gih-room" placeholder="Номер комнаты" style="width:140px">
+          <div style="flex:1">
+            <div class="gih-products-area" id="gih-products-area"></div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px;">
+          <button class="btn ghost small" id="cancel-gih">Отмена</button>
+          <button class="btn small" id="save-gih">Сохранить</button>
+        </div>
+      </div>
+
+      <!-- Two collapsible summaries -->
+      <div class="card" id="gih-summary" style="margin:8px 0;padding:10px;cursor:pointer;">
+        <div class="gih-summary-header" style="display:flex;justify-content:space-between;">
+          <div id="gih-summary-title">Список продуктов</div>
+          <svg id="gih-summary-arrow" viewBox="0 0 24 24" width="16" height="16"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <div id="gih-summary-list" class="muted" style="font-size:12px;margin-top:6px;"></div>
+      </div>
+
+      <div class="card" id="gih-rooms-summary" style="margin:8px 0;padding:10px;cursor:pointer;">
+        <div style="display:flex;justify-content:space-between;">
+          <div id="gih-rooms-summary-title">Список номеров (<span id="rooms-saved-count">0</span>/<span id="rooms-total-count">0</span>)</div>
+          <svg id="gih-rooms-summary-arrow" viewBox="0 0 24 24" width="16" height="16"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <div id="gih-rooms-summary-list" class="muted" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;"></div>
+      </div>
+
+      <div class="gih-records" id="gih-records"></div>
     </div>
-    <script src="js/scripts.js"></script>
-</body>
-</html>
+  </main>
+
+  <div id="bottom-nav"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="js/common.js"></script>
+  <script src="js/gih.js"></script>
+</body></html>
